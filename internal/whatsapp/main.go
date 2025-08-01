@@ -17,7 +17,7 @@ type Whatsapp struct {
 	Client *whatsmeow.Client
 }
 
-func NewWhatsapp() (*Whatsapp, error) {
+func NewClient() (*Whatsapp, error) {
 	ctx := context.Background()
 
 	if err := godotenv.Load(); err != nil {
