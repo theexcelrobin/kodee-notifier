@@ -1,3 +1,6 @@
-package main
+package telegram
 
-type Telegram struct{}
+type Telegram struct {
+	Client      string
+	PhoneNumber string
+}
