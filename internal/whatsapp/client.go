@@ -8,7 +8,6 @@ import (
 	"go.mau.fi/whatsmeow"
 	"go.mau.fi/whatsmeow/store/sqlstore"
 
-	"github.com/joho/godotenv"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/skip2/go-qrcode"
 )
@@ -20,11 +19,7 @@ type Whatsapp struct {
 func NewClient() (*Whatsapp, error) {
 	ctx := context.Background()
 
-	if err := godotenv.Load(); err != nil {
-		return nil, fmt.Errorf("error loading .env file: %s", err.Error())
-	}
-
-	container, err := sqlstore.New(ctx, "sqlite3", fmt.Sprintf("file:%s.db?_foreign_keys=on", os.Getenv("SESSION")), nil)
+	container, err := sqlstore.New(ctx, "sqlite3", fmt.Sprintf("file:%s.db?_foreign_keys=on", os.Getenv("WHATSAPP_SESSION")), nil)
 	if err != nil {
 		return nil, fmt.Errorf("database error: %s", err.Error())
 	}

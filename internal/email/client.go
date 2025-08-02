@@ -1,10 +1,6 @@
 package email
 
-import (
-	"fmt"
-
-	"github.com/joho/godotenv"
-)
+import "os"
 
 type Email struct {
 	Address  string
@@ -14,9 +10,10 @@ type Email struct {
 }
 
 func NewClient() (*Email, error) {
-	if err := godotenv.Load(); err != nil {
-		return nil, fmt.Errorf("error loading .env file: %s", err.Error())
-	}
-
-	return &Email{}, nil
+	return &Email{
+		Address:  os.Getenv("EMAIL_ADDRESS"),
+		Password: os.Getenv("EMAIL_SECRET"),
+		SmtpHost: os.Getenv("SMTP_HOST"),
+		SmtpPort: os.Getenv("SMTP_PORT"),
+	}, nil
 }
