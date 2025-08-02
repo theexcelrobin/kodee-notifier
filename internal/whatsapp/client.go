@@ -49,7 +49,7 @@ func NewClient() (*Whatsapp, error) {
 					fmt.Println(qr.ToSmallString(false))
 				}
 
-				if err := qrcode.WriteFile(evt.Code, qrcode.Low, 64, "qr.png"); err == nil {
+				if err := qrcode.WriteFile(evt.Code, qrcode.Low, 16, "qr.png"); err == nil {
 					fmt.Println("QR code also saved as qr.png")
 				}
 			} else {
