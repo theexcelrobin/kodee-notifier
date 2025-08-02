@@ -20,7 +20,3 @@ func NewClient() (*Email, error) {
 
 	return &Email{}, nil
 }
-
-func (e *Email) Notify(email, subject, content string) error {
-	return nil
-}

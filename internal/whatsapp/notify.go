@@ -8,7 +8,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func (w *Whatsapp) notify(phone, text string) error {
+func (w *Whatsapp) Notify(phone, text string) error {
 	recipientJID := types.NewJID(phone, types.DefaultUserServer)
 
 	message := &waE2E.Message{

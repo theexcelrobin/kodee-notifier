@@ -57,9 +57,9 @@ func (a *Api) SpawnServer() error {
 
 type NotifyOrderRequest struct {
 	Item        string `json:"item"`
-	ClientName  string `json:"client_name"`
-	ClientEmail string `json:"client_email"`
-	ClientPhone string `json:"client_phone"`
+	ClientName  string `json:"name"`
+	ClientEmail string `json:"email"`
+	ClientPhone string `json:"phone"`
 }
 
 func (a *Api) NotifyOrder(c *gin.Context) {
@@ -91,7 +91,17 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 	go func() {
 		defer wg.Done()
 		if a.Email != nil {
-			if err := a.Telegram.Notify(req.ClientEmail, "NEW ORDER REQUEST", msg); err != nil {
+			if err := a.Telegram.Notify(req.ClientPhone, msg); err != nil {
+				ec <- err
+			}
+		}
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		if a.Email != nil {
+			if err := a.Whatsapp.Notify(req.ClientPhone, msg); err != nil {
 				ec <- err
 			}
 		}
