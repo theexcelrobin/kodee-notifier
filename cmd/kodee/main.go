@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
 	"github.com/theexcelrobin/kodee-notifier/internal/api"
 	"github.com/theexcelrobin/kodee-notifier/internal/email"
 	"github.com/theexcelrobin/kodee-notifier/internal/logger"
@@ -9,6 +10,10 @@ import (
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		panic(err)
+	}
+
 	l, err := logger.NewLogger()
 	if err != nil {
 		panic(err)
