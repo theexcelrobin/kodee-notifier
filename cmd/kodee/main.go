@@ -16,7 +16,7 @@ func main() {
 		defer l.LogFile.Close()
 	}
 
-	e, err := email.NewEmail()
+	e, err := email.NewClient()
 	if err != nil {
 		panic(err)
 	}
@@ -38,5 +38,5 @@ func main() {
 		panic(err)
 	}
 
-	a.Spawn()
+	a.SpawnServer()
 }
