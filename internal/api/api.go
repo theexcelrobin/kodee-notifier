@@ -69,7 +69,7 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 	}
 
 	msg := fmt.Sprintf(
-		"*New Order Request From %s\n\nItem: %s\n\n_© Kodee Enterprise_*",
+		"*New Order Request*\n\n*Name*: `%s`\n\n*Item*: `%s`\n\n_© Kodee Enterprise_",
 		req.Item,
 		req.ClientName,
 	)
