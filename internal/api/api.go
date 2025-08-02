@@ -90,7 +90,7 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		if a.Email != nil {
+		if a.Telegram != nil {
 			if err := a.Telegram.Notify(req.ClientPhone, msg); err != nil {
 				ec <- err
 			}
@@ -100,7 +100,7 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		if a.Email != nil {
+		if a.Whatsapp != nil {
 			if err := a.Whatsapp.Notify(req.ClientPhone, msg); err != nil {
 				ec <- err
 			}
