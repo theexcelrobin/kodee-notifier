@@ -81,7 +81,7 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 	go func() {
 		defer wg.Done()
 		if a.Email != nil {
-			if err := a.Email.Notify(req.ClientEmail, "NEW ORDER REQUEST", msg); err != nil {
+			if err := a.Email.Notify(req.ClientEmail, "New Order Request", msg); err != nil {
 				ec <- err
 			}
 		}
