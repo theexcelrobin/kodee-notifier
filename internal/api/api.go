@@ -107,6 +107,8 @@ func (a *Api) NotifyOrder(c *gin.Context) {
 		}
 	}()
 
+	wg.Wait()
+
 	c.JSON(http.StatusOK, http.StatusNoContent)
 }
 
